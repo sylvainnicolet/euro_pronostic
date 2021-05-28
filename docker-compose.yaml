@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:13-alpine
+    container_name: euro_pronostic_postgres_db
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: euro_pronostic
+    ports:
+      - "4321:5432"
