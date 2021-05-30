@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+  <section id="admin-users" class="flex flex-col items-center">
+    <h1 class="text-center text-2xl font-extrabold uppercase mb-10">Utilisateurs</h1>
+
+  <div class="w-full space-y-6 text-lg">
+    <div class="w-full flex flex-col items-center text-center py-4 rounded-md text-white bg-indigo-600 hover:bg-indigo-700"><a href="{{ path('admin.users') }}">Créer un utilisateur</a></div>
+
+    <table class="table-auto w-full">
+      <thead>
+        <tr class="border-b-2">
+          <th class="text-left uppercase">Utilisateur</th>
+          <th class="text-right"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+          <tr>
+            <td>{{ user.username }}</td>
+            <td class="text-right">Supprimer</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  </section>
+{% endblock %}
