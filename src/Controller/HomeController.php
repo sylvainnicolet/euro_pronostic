@@ -14,16 +14,24 @@ class HomeController extends AbstractController
    */
   public function index(): Response
   {
-    $user = $this->getUser();
+    return $this->redirectToRoute('admin.home');
+  }
 
-    if ($user != null) {
-      if (in_array("ROLE_ADMIN", $user->getRoles())) {
-          return $this->redirectToRoute('admin.index');
-      }
-      if (in_array("ROLE_USER", $user->getRoles())) {
-        return $this->render('home/index.html.twig');
-      }
-    }
-    return $this->redirectToRoute('login');
+  /**
+   * @Route("/admin/", name="admin.home")
+   * @return Response
+   */
+  public function indexAdmin(): Response
+  {
+    return $this->render('admin/index.html.twig');
+  }
+
+  /**
+   * @Route("/user/", name="user.home")
+   * @return Response
+   */
+  public function indexUser(): Response
+  {
+    return $this->render('user/index.html.twig');
   }
 }
