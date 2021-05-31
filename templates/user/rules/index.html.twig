@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Règlement{% endblock %}
+
+{% block body %}
+  <section id="user-rules" class="flex flex-col items-center">
+    <a href="{{ path('user.index') }}" class="text-lg self-end"><i class="fas fa-home"></i></a>
+
+    <h1 class="text-center text-2xl font-extrabold uppercase my-10">Règlement</h1>
+
+    <div class="w-full space-y-8 text-sm text-justify">
+      <p>
+        Vous établissez un classement préférentiel de 8 équipes différentes (1 seule fois la même équipe) participant à la UEFA EURO 2020. Chaque équipe choisie vous rapportera des points qui seront additionnés tout au long de la compétition et qui permettront d’établir un classement régulier au fil des matchs jusqu’à la finale.
+      </p>
+
+      <div>
+        <h2 class="text-xl font-bold uppercase mb-2">Attribution des points</h2>
+
+        <div class="space-y-8">
+          <div>
+            <p>Votre équipe classée en <span class="font-bold">1</span> vous rapportera :</p>
+            <ul>
+              <li><span class="font-bold">8</span> points pour une victoire</li>
+              <li><span class="font-bold">4</span> points pour un match nul</li>
+              <li><span class="font-bold">0</span> points pour un match nul</li>
+            </ul>
+          </div>
+
+          <div>
+            <p>Votre équipe classée en <span class="font-bold">2</span> vous rapportera :</p>
+            <ul>
+              <li><span class="font-bold">7</span> points pour une victoire</li>
+              <li><span class="font-bold">3.5</span> points pour un match nul</li>
+              <li><span class="font-bold">0</span> points pour un match nul</li>
+            </ul>
+          </div>
+
+          <div>
+            <p>Votre équipe classée en <span class="font-bold">3</span> vous rapportera :</p>
+            <ul>
+              <li><span class="font-bold">6</span> points pour une victoire</li>
+              <li><span class="font-bold">3</span> points pour un match nul</li>
+              <li><span class="font-bold">0</span> points pour un match nul</li>
+            </ul>
+          </div>
+
+          <div>
+            <p>Votre équipe classée en <span class="font-bold">4</span> vous rapportera :</p>
+            <ul>
+              <li><span class="font-bold">5</span> points pour une victoire</li>
+              <li><span class="font-bold">2.5</span> points pour un match nul</li>
+              <li><span class="font-bold">0</span> points pour un match nul</li>
+            </ul>
+          </div>
+
+          <div>
+            <p>Votre équipe classée en <span class="font-bold">5</span> vous rapportera :</p>
+            <ul>
+              <li><span class="font-bold">4</span> points pour une victoire</li>
+              <li><span class="font-bold">2</span> points pour un match nul</li>
+              <li><span class="font-bold">0</span> points pour un match nul</li>
+            </ul>
+          </div>
+
+          <div>
+            <p>Votre équipe classée en <span class="font-bold">6</span> vous rapportera :</p>
+            <ul>
+              <li><span class="font-bold">3</span> points pour une victoire</li>
+              <li><span class="font-bold">1.5</span> points pour un match nul</li>
+              <li><span class="font-bold">0</span> points pour un match nul</li>
+            </ul>
+          </div>
+
+          <div>
+            <p>Votre équipe classée en <span class="font-bold">7</span> vous rapportera :</p>
+            <ul>
+              <li><span class="font-bold">2</span> points pour une victoire</li>
+              <li><span class="font-bold">1</span> points pour un match nul</li>
+              <li><span class="font-bold">0</span> points pour un match nul</li>
+            </ul>
+          </div>
+
+          <div>
+            <p>Votre équipe classée en <span class="font-bold">8</span> vous rapportera :</p>
+            <ul>
+              <li><span class="font-bold">1</span> points pour une victoire</li>
+              <li><span class="font-bold">0.5</span> points pour un match nul</li>
+              <li><span class="font-bold">0</span> points pour un match nul</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold uppercase mb-2">Remarque</h2>
+        <p>A partir des huitièmes de finale et jusqu’à la finale, <span class="font-bold">seul le résultat effectif sera pris en compte</span> ; c’est-à-dire après prolongations ou après tirs au but. Aucun match
+          nul ne sera donc comptabilisé durant la phase finale.</p>
+      </div>
+
+
+    </div>
+  </section>
+{% endblock %}
