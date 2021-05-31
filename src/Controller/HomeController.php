@@ -18,7 +18,7 @@ class HomeController extends AbstractController
     $user = $this->getUser();
     if ($user != null) {
         if (in_array("ROLE_ADMIN", $user->getRoles())) {
-            return $this->redirectToRoute('admin.home');
+            return $this->redirectToRoute('admin.index');
         }
       if (in_array("ROLE_USER", $user->getRoles())) {
         return $this->redirectToRoute('user.index');

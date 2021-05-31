@@ -1,31 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Users{% endblock %}
+{% block title %}Utilisateurs{% endblock %}
 
 {% block body %}
   <section id="admin-users" class="flex flex-col items-center">
-    <h1 class="text-center text-2xl font-extrabold uppercase mb-10">Utilisateurs</h1>
+    <a href="{{ path('admin.index') }}" class="text-lg self-end"><i class="fas fa-home"></i></a>
 
-  <div class="w-full space-y-6 text-lg">
-    <div class="w-full flex flex-col items-center text-center py-4 rounded-md text-white bg-indigo-600 hover:bg-indigo-700"><a href="{{ path('admin.users') }}">Créer un utilisateur</a></div>
+    <h1 class="text-center text-2xl font-extrabold uppercase my-10">Utilisateurs</h1>
 
-    <table class="table-auto w-full">
-      <thead>
-        <tr class="border-b-2">
-          <th class="text-left uppercase">Utilisateur</th>
-          <th class="text-right"></th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for user in users %}
-          <tr>
-            <td>{{ user.username }}</td>
-            <td class="text-right">Supprimer</td>
+    <div class="w-full space-y-6 text-lg">
+      <div class="w-full text-center py-3 rounded-md text-white bg-indigo-600 hover:bg-indigo-700"><a href="{{ path('admin.users.create') }}">Créer un utilisateur</a></div>
+      <table class="table-auto w-full space-y-6" >
+        <thead>
+          <tr class="border-b-2">
+            <th class="text-left uppercase">Utilisateur</th>
+            <th class="text-right"></th>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          {% for user in users %}
+            <tr>
+              <td class="py-3 flex items-center">
+                <a href="{{ path('admin.users.edit', {id: user.id}) }}" class="hover:underline">{{ user.username }}</a>
+              </td>
+              <td class="text-right">
+                <form method="POST" action="{{ path('admin.users.delete', {id: user.id}) }}"
+                      onsubmit="return confirm('Êtes-vous vraiment sûr de supprimer cet utilisateur ?')">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                  <button class="text-base text-center p-2 rounded-md text-white bg-red-600 hover:bg-red-700">Supprimer</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
 
   </section>
 {% endblock %}
