@@ -22,6 +22,11 @@ class Team
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $groupe;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +40,18 @@ class Team
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getGroupe(): ?int
+    {
+        return $this->groupe;
+    }
+
+    public function setGroupe(int $groupe): self
+    {
+        $this->groupe = $groupe;
 
         return $this;
     }
