@@ -40,6 +40,12 @@ class UserFixtures extends Fixture
     $user->setRoles(['ROLE_USER']);
     $manager->persist($user);
 
+    $user2 = new User();
+    $user2->setUsername('user2');
+    $user2->setPassword($this->encoder->encodePassword($userAdmin, 'user2'));
+    $user2->setRoles(['ROLE_USER']);
+    $manager->persist($user2);
+
     $manager->flush();
   }
 }

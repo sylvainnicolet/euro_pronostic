@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\UserPasswordType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -118,6 +119,37 @@ class UserController extends AbstractController
     }
 
     return $this->render('/admin/users/edit.html.twig', [
+        'user' => $user,
+        'form' => $form->createView()
+    ]);
+  }
+
+  /**
+   * @Route("/user/settings/edit-password/{id}", name="user.settings.editPassword", methods={"GET|POST"})
+   * @param User $user
+   * @param Request $request
+   * @param UserPasswordEncoderInterface $passwordEncoder
+   * @return RedirectResponse|Response
+   */
+  public function editPassword(User $user, Request $request, UserPasswordEncoderInterface $passwordEncoder) {
+
+    $form = $this->createForm(UserPasswordType::class, $user);
+
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+      // Encode the plain password
+      $user->setPassword(
+          $passwordEncoder->encodePassword(
+              $user,
+              $form->get('password')->getData()
+          )
+      );
+
+      $this->em->flush();
+      return $this->redirectToRoute('user.index');
+    }
+
+    return $this->render('/user/settings/form.html.twig', [
         'user' => $user,
         'form' => $form->createView()
     ]);

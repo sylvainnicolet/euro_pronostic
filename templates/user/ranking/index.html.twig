@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classement{% endblock %}
+
+{% block body %}
+  <section id="user-groupes" class="flex flex-col items-center">
+    <a href="{{ path('user.index') }}" class="text-lg self-end"><i class="fas fa-home"></i></a>
+
+    <h1 class="text-center text-2xl font-extrabold uppercase my-10">Classement</h1>
+
+
+    <table class="table-fixed w-full" >
+      <thead>
+      <tr class="border-b-2">
+        <th class="text-left w-1/2">Joueur</th>
+        <th class="text-right">Pts</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      {% for user in users %}
+        <tr>
+          <td class="flex items-center">
+            <a href="#">{{ user.username }}</a>
+          </td>
+          <td class="text-right">
+            0
+          </td>
+        </tr>
+      {% endfor %}
+
+      </tbody>
+    </table>
+
+
+  </section>
+{% endblock %}
