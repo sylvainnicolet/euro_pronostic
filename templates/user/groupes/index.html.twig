@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Groupes{% endblock %}
+
+{% block body %}
+  <section id="user-groupes" class="flex flex-col items-center">
+    <a href="{{ path('user.index') }}" class="text-lg self-end"><i class="fas fa-home"></i></a>
+
+    <h1 class="text-center text-2xl font-extrabold uppercase my-10">Groupes</h1>
+
+    <div class="w-full space-y-6 text-xs">
+
+      {% for groupeName, groupe in groupes %}
+      <h2 class="text-center text-xl font-extrabold uppercase my-6">{{ groupeName }}</h2>
+      <table class="table-fixed w-full space-y-6" >
+        <thead>
+        <tr class="border-b-2">
+          <th class="text-left w-1/2">Pays</th>
+          <th class="text-center">MJ</th>
+          <th class="text-center">G</th>
+          <th class="text-center">N</th>
+          <th class="text-center">P</th>
+          <th class="text-center">Pts</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for team in groupe %}
+          <tr>
+            <td class="py-2 flex items-center">
+              {{ team.name }}
+            </td>
+            <td class="text-center">
+              0
+            </td>
+            <td class="text-center">
+              0
+            </td>
+            <td class="text-center">
+              0
+            </td>
+            <td class="text-center">
+              0
+            </td>
+            <td class="text-center">
+              0
+            </td>
+          </tr>
+        {% endfor %}
+
+        </tbody>
+      </table>
+      {% endfor %}
+    </div>
+
+  </section>
+{% endblock %}
