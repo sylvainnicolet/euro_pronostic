@@ -13,14 +13,16 @@ class CompositionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+      for ($i = 1; $i <= 8; $i++) {
         $builder
-            ->add('team_1', EntityType::class, [
+            ->add('team_' . $i, EntityType::class, [
                 'class' => Team::class,
                 'choice_label' => 'name',
                 'choice_value' => 'id',
-                'label' => 'Equipe 1'
+                'label' => 'Equipe ' . $i
             ])
         ;
+      }
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -41,8 +41,15 @@ class HomeController extends AbstractController
    */
   public function indexUser(): Response
   {
+
+    $user = $this->getUser();
+    $composition = $user->getComposition();
+
+//    dd($composition);
+
     return $this->render('user/index.html.twig', [
-        'user' => $this->getUser()
+        'user' => $user,
+        'composition' => $composition
     ]);
   }
 }

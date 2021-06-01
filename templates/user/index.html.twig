@@ -8,7 +8,16 @@
 
     <nav class="w-full">
       <ul class="text-lg flex flex-col items-center space-y-6 text-center">
-        <li class="w-full py-3 rounded-md text-white bg-indigo-600 hover:bg-indigo-700"><a href="{{ path('user.composition.create', {id: user.id}) }}">Ma compo</a></li>
+
+        <li class="w-full py-3 rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+          <a href="
+            {% if composition is null %}
+              {{ path('user.composition.create', {id: user.id}) }}
+            {% else %}
+              {{ path('user.composition.edit', {id: composition.id}) }}
+            {% endif %}
+          ">Ma composition</a>
+        </li>
         <li class="w-full py-3 rounded-md text-white bg-indigo-600 hover:bg-indigo-700"><a href="{{ path('user.ranking') }}">Classements</a></li>
         <li class="w-full py-3 rounded-md text-white bg-indigo-600 hover:bg-indigo-700"><a href="#">Matchs</a></li>
         <li class="w-full py-3 rounded-md text-white bg-indigo-600 hover:bg-indigo-700"><a href="{{ path('user.groupes') }}">Groupes</a></li>
