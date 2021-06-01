@@ -36,6 +36,11 @@ class User implements UserInterface
    */
   private $password;
 
+  /**
+   * @ORM\OneToOne(targetEntity=Composition::class, mappedBy="player", cascade={"persist", "remove"})
+   */
+  private $composition;
+
   public function getId(): ?int
   {
     return $this->id;
@@ -105,5 +110,22 @@ class User implements UserInterface
   {
     // If you store any temporary, sensitive data on the user, clear it here
     // $this->plainPassword = null;
+  }
+
+  public function getComposition(): ?Composition
+  {
+      return $this->composition;
+  }
+
+  public function setComposition(Composition $composition): self
+  {
+      // set the owning side of the relation if necessary
+      if ($composition->getPlayer() !== $this) {
+          $composition->setPlayer($this);
+      }
+
+      $this->composition = $composition;
+
+      return $this;
   }
 }
