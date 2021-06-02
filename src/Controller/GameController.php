@@ -40,12 +40,24 @@ class GameController extends AbstractController
    * @Route("/admin/games", name="admin.games")
    * @return Response
    */
-  public function showGames(): Response
+  public function showGamesAdmins(): Response
   {
     $games = $this->getDoctrine()->getRepository(Game::class)->findAll();
-//    dd($games);
 
     return $this->render('admin/games/index.html.twig', [
+        'games' => $games
+    ]);
+  }
+
+  /**
+   * @Route("/user/games", name="user.games")
+   * @return Response
+   */
+  public function showGamesUsers(): Response
+  {
+    $games = $this->getDoctrine()->getRepository(Game::class)->findAll();
+
+    return $this->render('user/games/index.html.twig', [
         'games' => $games
     ]);
   }

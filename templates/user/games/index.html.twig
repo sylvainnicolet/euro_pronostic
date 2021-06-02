@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Matchs{% endblock %}
+
+{% block body %}
+  <section id="index-matchs" class="flex flex-col items-center">
+    <a href="{{ path('user.index') }}" class="text-lg self-end"><i class="fas fa-home"></i></a>
+
+    <h1 class="text-center text-2xl font-extrabold uppercase my-10">Matchs</h1>
+
+    <div class="w-full space-y-6">
+      {% for game in games %}
+        <div class="flex flex-col items-center space-y-3 rounded-lg shadow-md bg-gray-100 py-6">
+
+          <div class="text-center text-white w-min bg-gray-500 rounded-full text-xs px-3 py-1">{{ game.phase }}</div>
+
+          <p class="text-center text-sm tracking-widest">
+            {{ game.date|date('d/m/Y') }} - {{ game.time|date('H') }}h{{ game.time|date('i') }}
+          </p>
+
+          <div>
+            <h2 class="text-center text-xl font-extrabold">
+              {% if game.team1 is not null %}
+                {{ game.team1.name }} - {{ game.team2.name }}
+              {% else %}
+                ? - ?
+              {% endif %}
+            </h2>
+
+            {% if game.isfinished %}
+            <p class="text-center text-xl font-extrabold">
+              {{ game.score1 }} - {{ game.score2 }}
+            </p>
+            {% endif %}
+          </div>
+
+          {% if game.isfinished %}
+            <div class="text-center text-white bg-green-600 rounded-full text-xs px-3 py-1">Terminé</div>
+          {% else %}
+            <div class="text-center text-white bg-red-600 rounded-full text-xs px-3 py-1">A venir</div>
+          {% endif %}
+
+        </div>
+      {% endfor %}
+
+
+
+    </div>
+
+  </section>
+{% endblock %}
