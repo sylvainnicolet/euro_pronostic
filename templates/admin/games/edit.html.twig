@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifer un match{% endblock %}
+
+{% block body %}
+  <section id="admin-match-created" class="flex flex-col items-center">
+    <a href="{{ path('admin.index') }}" class="text-lg self-end"><i class="fas fa-home"></i></a>
+
+    <h1 class="text-center text-2xl font-extrabold uppercase my-10">Modifier un match</h1>
+
+    {{ include('/admin/games/_form.html.twig', {button: 'Modifier'}) }}
+  </section>
+
+{% endblock %}

@@ -48,9 +48,19 @@ class Game
     private $isFinished;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $date;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $time;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $phase;
 
     public function getId(): ?int
     {
@@ -137,6 +147,30 @@ class Game
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getTime(): ?\DateTimeInterface
+    {
+        return $this->time;
+    }
+
+    public function setTime(\DateTimeInterface $time): self
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    public function getPhase(): ?string
+    {
+        return $this->phase;
+    }
+
+    public function setPhase(string $phase): self
+    {
+        $this->phase = $phase;
 
         return $this;
     }

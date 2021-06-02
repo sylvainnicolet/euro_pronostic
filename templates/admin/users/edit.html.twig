@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Editer un utilisateur{% endblock %}
+{% block title %}Modifier un utilisateur{% endblock %}
 
 {% block body %}
   <section id="admin-users-edited" class="flex flex-col items-center">
     <a href="{{ path('admin.index') }}" class="text-lg self-end"><i class="fas fa-home"></i></a>
 
-    <h1 class="text-center text-2xl font-extrabold uppercase my-10">Editer un utilisateur</h1>
+    <h1 class="text-center text-2xl font-extrabold uppercase my-10">Modifier un utilisateur</h1>
 
     {{ include('/admin/users/_form.html.twig', {button: 'Editer'}) }}
   </section>
