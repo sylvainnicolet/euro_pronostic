@@ -48,40 +48,40 @@ class AppFixtures extends Fixture
   }
 
   private function createTeams() {
-    $this->createTeam('Italie', 1);
-    $this->createTeam('Suisse', 1);
-    $this->createTeam('Turquie', 1);
-    $this->createTeam('Pays de Galles', 1);
+    $this->createTeam('Italie', 1, "🇮🇹");
+    $this->createTeam('Suisse', 1, "🇨🇭");
+    $this->createTeam('Turquie', 1, "🇹🇷");
+    $this->createTeam('Pays de Galles', 1, "🏴󠁧󠁢󠁷󠁬󠁳󠁿");
 
-    $this->createTeam('Belgique', 2);
-    $this->createTeam('Danemark', 2);
-    $this->createTeam('Finlande', 2);
-    $this->createTeam('Russie', 2);
+    $this->createTeam('Belgique', 2, "🇧🇪");
+    $this->createTeam('Danemark', 2, "🇩🇰");
+    $this->createTeam('Finlande', 2, "🇫🇮");
+    $this->createTeam('Russie', 2, "🇷🇺");
 
-    $this->createTeam('Autriche', 3);
-    $this->createTeam('Pays-Bas', 3);
-    $this->createTeam('Macédoine du Nord', 3);
-    $this->createTeam('Ukraine', 3);
+    $this->createTeam('Autriche', 3, "🇦🇹");
+    $this->createTeam('Pays-Bas', 3, "🇳🇱");
+    $this->createTeam('Macédoine du Nord', 3, "🇲🇰");
+    $this->createTeam('Ukraine', 3, "🇺🇦");
 
-    $this->createTeam('Croatie', 4);
-    $this->createTeam('République tchèque', 4);
-    $this->createTeam('Angleterre', 4);
-    $this->createTeam('Écosse', 4);
+    $this->createTeam('Croatie', 4, "🇭🇷");
+    $this->createTeam('République tchèque', 4, "🇨🇿");
+    $this->createTeam('Angleterre', 4, "🏴󠁧󠁢󠁥󠁮󠁧󠁿");
+    $this->createTeam('Écosse', 4, "🏴󠁧󠁢󠁳󠁣󠁴󠁿");
 
-    $this->createTeam('Pologne', 5);
-    $this->createTeam('Slovaquie', 5);
-    $this->createTeam('Espagne', 5);
-    $this->createTeam('Suède', 5);
+    $this->createTeam('Pologne', 5, "🇵🇱");
+    $this->createTeam('Slovaquie', 5, "🇸🇰");
+    $this->createTeam('Espagne', 5, "🇪🇸");
+    $this->createTeam('Suède', 5, "🇸🇪");
 
-    $this->createTeam('France', 6);
-    $this->createTeam('Allemagne', 6);
-    $this->createTeam('Hongrie', 6);
-    $this->createTeam('Portugal', 6);
+    $this->createTeam('France', 6, "🇫🇷");
+    $this->createTeam('Allemagne', 6, "🇩🇪");
+    $this->createTeam('Hongrie', 6, "🇭🇺");
+    $this->createTeam('Portugal', 6, "🇵🇹");
   }
 
-  private function createTeam($name, $group) {
+  private function createTeam($name, $group, $flag) {
     $team = new Team();
-    $team->setName($name)->setGroupe($group);
+    $team->setName($name)->setGroupe($group)->setFlag($flag);
     $this->manager->persist($team);
   }
 

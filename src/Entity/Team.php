@@ -34,6 +34,11 @@ class Team
      */
     private $games;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $flag;
+
     public function __construct()
     {
         $this->games = new ArrayCollection();
@@ -94,6 +99,18 @@ class Team
                 $game->setTeam1(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFlag(): ?string
+    {
+        return $this->flag;
+    }
+
+    public function setFlag(string $flag): self
+    {
+        $this->flag = $flag;
 
         return $this;
     }
