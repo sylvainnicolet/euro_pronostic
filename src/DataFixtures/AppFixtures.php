@@ -33,11 +33,10 @@ class AppFixtures extends Fixture
 
     $this->createUser('admin', 'admin', ['ROLE_ADMIN']);
     $this->createUser('demo', 'demo', ['ROLE_USER']);
-
     $this->createTeams();
+    $manager->flush();
 
     $this->createGames();
-
     $manager->flush();
   }
 
@@ -66,7 +65,7 @@ class AppFixtures extends Fixture
     $this->createTeam('Croatie', 4, "🇭🇷");
     $this->createTeam('République tchèque', 4, "🇨🇿");
     $this->createTeam('Angleterre', 4, "🏴󠁧󠁢󠁥󠁮󠁧󠁿");
-    $this->createTeam('Écosse', 4, "🏴󠁧󠁢󠁳󠁣󠁴󠁿");
+    $this->createTeam('Ecosse', 4, "🏴󠁧󠁢󠁳󠁣󠁴󠁿");
 
     $this->createTeam('Pologne', 5, "🇵🇱");
     $this->createTeam('Slovaquie', 5, "🇸🇰");
@@ -88,66 +87,66 @@ class AppFixtures extends Fixture
   private function createGames() {
 
     // vendredi 11 juin 2021
-    $this->createGame(null, null, 11, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Turquie", "Italie", 11, 6, 2021, 21, 00, true, 'Poules');
 
     // samedi 12 juin 2021
-    $this->createGame(null, null, 12, 6, 2021, 15, 00, true, 'Poules');
-    $this->createGame(null, null, 12, 6, 2021, 18, 00, true, 'Poules');
-    $this->createGame(null, null, 12, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Pays de Galles", "Suisse", 12, 6, 2021, 15, 00, true, 'Poules');
+    $this->createGame("Danemark", "Finlande", 12, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("Belgique", "Russie", 12, 6, 2021, 21, 00, true, 'Poules');
 
     // dimanche 13 juin 2021
-    $this->createGame(null, null, 13, 6, 2021, 15, 00, true, 'Poules');
-    $this->createGame(null, null, 13, 6, 2021, 18, 00, true, 'Poules');
-    $this->createGame(null, null, 13, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Angleterre", "Croatie", 13, 6, 2021, 15, 00, true, 'Poules');
+    $this->createGame("Autriche", "Macédoine du Nord", 13, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("Pays-Bas", "Ukraine", 13, 6, 2021, 21, 00, true, 'Poules');
 
     // lundi 14 juin 2021
-    $this->createGame(null, null, 14, 6, 2021, 15, 00, true, 'Poules');
-    $this->createGame(null, null, 14, 6, 2021, 18, 00, true, 'Poules');
-    $this->createGame(null, null, 14, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Ecosse", "République tchèque", 14, 6, 2021, 15, 00, true, 'Poules');
+    $this->createGame("Pologne", "Slovaquie", 14, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("Espagne", "Suède", 14, 6, 2021, 21, 00, true, 'Poules');
 
     // mardi 15 juin 2021
-    $this->createGame(null, null, 15, 6, 2021, 18, 00, true, 'Poules');
-    $this->createGame(null, null, 15, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Hongrie", "Portugal", 15, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("France", "Allemagne", 15, 6, 2021, 21, 00, true, 'Poules');
 
     // mercredi 16 juin 2021
-    $this->createGame(null, null, 16, 6, 2021, 15, 00, true, 'Poules');
-    $this->createGame(null, null, 16, 6, 2021, 18, 00, true, 'Poules');
-    $this->createGame(null, null, 16, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Finlande", "Russie", 16, 6, 2021, 15, 00, true, 'Poules');
+    $this->createGame("Turquie", "Pays de Galles", 16, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("Italie", "Suisse", 16, 6, 2021, 21, 00, true, 'Poules');
 
     // jeudi 17 juin 2021
-    $this->createGame(null, null, 17, 6, 2021, 15, 00, true, 'Poules');
-    $this->createGame(null, null, 17, 6, 2021, 18, 00, true, 'Poules');
-    $this->createGame(null, null, 17, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Ukraine", "Macédoine du Nord", 17, 6, 2021, 15, 00, true, 'Poules');
+    $this->createGame("Danemark", "Belgique", 17, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("Pays-Bas", "Autriche", 17, 6, 2021, 21, 00, true, 'Poules');
 
     // vendredi 18 juin 2021
-    $this->createGame(null, null, 18, 6, 2021, 15, 00, true, 'Poules');
-    $this->createGame(null, null, 18, 6, 2021, 18, 00, true, 'Poules');
-    $this->createGame(null, null, 18, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Suède", "Slovaquie", 18, 6, 2021, 15, 00, true, 'Poules');
+    $this->createGame("Croatie", "République tchèque", 18, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("Angleterre", "Ecosse", 18, 6, 2021, 21, 00, true, 'Poules');
 
     // samedi 19 juin 2021
-    $this->createGame(null, null, 19, 6, 2021, 15, 00, true, 'Poules');
-    $this->createGame(null, null, 19, 6, 2021, 18, 00, true, 'Poules');
-    $this->createGame(null, null, 19, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Hongrie", "France", 19, 6, 2021, 15, 00, true, 'Poules');
+    $this->createGame("Portugal", "Allemagne", 19, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("Espagne", "Pologne", 19, 6, 2021, 21, 00, true, 'Poules');
 
     // dimanche 20 juin 2021
-    $this->createGame(null, null, 20, 6, 2021, 18, 00, true, 'Poules');
-    $this->createGame(null, null, 20, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("Italie", "Pays de Galles", 20, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("Suisse", "Turquie", 20, 6, 2021, 18, 00, true, 'Poules');
 
     // lundi 21 juin 2021
-    $this->createGame(null, null, 21, 6, 2021, 18, 00, true, 'Poules');
-    $this->createGame(null, null, 21, 6, 2021, 18, 00, true, 'Poules');
-    $this->createGame(null, null, 21, 6, 2021, 21, 00, true, 'Poules');
-    $this->createGame(null, null, 21, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Ukraine", "Autriche", 21, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("Macédoine du Nord", "Pays-Bas", 21, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("Russie", "Danemark", 21, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Finlande", "Belgique", 21, 6, 2021, 21, 00, true, 'Poules');
 
     // mardi 22 juin 2021
-    $this->createGame(null, null, 22, 6, 2021, 21, 00, true, 'Poules');
-    $this->createGame(null, null, 22, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("République tchèque", "Angleterre", 22, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Croatie", "Ecosse", 22, 6, 2021, 21, 00, true, 'Poules');
 
     // mercredi 23 juin 2021
-    $this->createGame(null, null, 23, 6, 2021, 18, 00, true, 'Poules');
-    $this->createGame(null, null, 23, 6, 2021, 18, 00, true, 'Poules');
-    $this->createGame(null, null, 23, 6, 2021, 21, 00, true, 'Poules');
-    $this->createGame(null, null, 23, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Suède", "Pologne", 23, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("Slovaquie", "Espagne", 23, 6, 2021, 18, 00, true, 'Poules');
+    $this->createGame("Portugal", "France", 23, 6, 2021, 21, 00, true, 'Poules');
+    $this->createGame("Allemagne", "Hongrie", 23, 6, 2021, 21, 00, true, 'Poules');
 
     // samedi 26 juin 2021
     $this->createGame(null, null, 26, 6, 2021, 18, 00, false, '1/8');
@@ -186,12 +185,18 @@ class AppFixtures extends Fixture
   }
 
   private function createGame($team_1, $team_2, $day, $month, $year, $hour, $minute, $isGroupGame, $phase) {
+
+    // Date & Time
     $dateOutput = new \DateTime();
     $dateOutput->setDate($year, $month, $day);
     $dateOutput->setTime($hour, $minute);
 
+    // Teams
+    $team1_Output = $this->manager->getRepository(Team::class)->findOneByName($team_1);
+    $team2_Output = $this->manager->getRepository(Team::class)->findOneByName($team_2);
+
     $game = new Game();
-    $game->setTeam1($team_1)->setTeam2($team_2);
+    $game->setTeam1($team1_Output)->setTeam2($team2_Output);
     $game->setDate($dateOutput)->setTime($dateOutput)->setIsGroupGame($isGroupGame)->setPhase($phase)->setIsFinished(false);
     $this->manager->persist($game);
   }

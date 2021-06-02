@@ -21,7 +21,7 @@
           <div>
             <h2 class="text-center text-xl font-extrabold">
               {% if game.team1 is not null %}
-                {{ game.team1.name }} - {{ game.team2.name }}
+                {{ game.team1.flag }} {{ game.team1.name }} - {{ game.team2.flag }} {{ game.team2.name }}
               {% else %}
                 ? - ?
               {% endif %}
@@ -42,8 +42,6 @@
 
         </div>
       {% endfor %}
-
-
 
     </div>
 
