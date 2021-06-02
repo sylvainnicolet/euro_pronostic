@@ -19,15 +19,6 @@ class TeamRepository extends ServiceEntityRepository
         parent::__construct($registry, Team::class);
     }
 
-    public function findOneByName($name): ?Team {
-      return $this->createQueryBuilder('t')
-          ->andWhere('t.name = :name')
-          ->setParameter('name', $name)
-          ->getQuery()
-          ->getOneOrNullResult()
-          ;
-    }
-
     // /**
     //  * @return Team[] Returns an array of Team objects
     //  */

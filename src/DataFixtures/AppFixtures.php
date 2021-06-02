@@ -192,8 +192,8 @@ class AppFixtures extends Fixture
     $dateOutput->setTime($hour, $minute);
 
     // Teams
-    $team1_Output = $this->manager->getRepository(Team::class)->findOneByName($team_1);
-    $team2_Output = $this->manager->getRepository(Team::class)->findOneByName($team_2);
+    $team1_Output = $this->manager->getRepository(Team::class)->findOneBy(['name' => $team_1]);
+    $team2_Output = $this->manager->getRepository(Team::class)->findOneBy(['name' => $team_2]);
 
     $game = new Game();
     $game->setTeam1($team1_Output)->setTeam2($team2_Output);

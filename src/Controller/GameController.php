@@ -42,7 +42,10 @@ class GameController extends AbstractController
    */
   public function showGamesAdmins(): Response
   {
-    $games = $this->getDoctrine()->getRepository(Game::class)->findAll();
+    $games = $this->getDoctrine()->getRepository(Game::class)->findBy(
+        [],
+        ['date' => 'ASC', 'time' => 'ASC']
+    );
 
     return $this->render('admin/games/index.html.twig', [
         'games' => $games
@@ -55,7 +58,10 @@ class GameController extends AbstractController
    */
   public function showGamesUsers(): Response
   {
-    $games = $this->getDoctrine()->getRepository(Game::class)->findAll();
+    $games = $this->getDoctrine()->getRepository(Game::class)->findBy(
+        [],
+        ['date' => 'ASC', 'time' => 'ASC']
+    );
 
     return $this->render('user/games/index.html.twig', [
         'games' => $games
