@@ -25,25 +25,25 @@
         </thead>
         <tbody>
 
-        {% for team in groupe %}
+        {% for team in groupe|sort((a, b) => b.total <=> a.total) %}
           <tr>
             <td class="py-2 flex items-center">
               󠁧󠁢{{ team.flag }}󠁿 {{ team.name }}
             </td>
             <td class="text-center">
-              0
+              {{ team.mj }}
             </td>
             <td class="text-center">
-              0
+              {{ team.g }}
             </td>
             <td class="text-center">
-              0
+              {{ team.n }}
             </td>
             <td class="text-center">
-              0
+              {{ team.p }}
             </td>
             <td class="text-center">
-              0
+              {{ team.total }}
             </td>
           </tr>
         {% endfor %}
