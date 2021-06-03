@@ -69,73 +69,74 @@ class UserController extends AbstractController
     $composition = $this->getDoctrine()->getRepository(Composition::class)->findOneBy([
         'player' => $user->getId()
     ]);
-    $gamesPlayed = $this->getDoctrine()->getRepository(Game::class)->findBy(['isFinished' => true,]);
 
-    // Team 1
-    $calculatedPoints = $this->calculatePoints($composition->getTeam1(), $gamesPlayed, 8);
-    $composition->getTeam1()->mj = $calculatedPoints['mj'];
-    $composition->getTeam1()->g = $calculatedPoints['g'];
-    $composition->getTeam1()->n = $calculatedPoints['n'];
-    $composition->getTeam1()->p = $calculatedPoints['p'];
-    $composition->getTeam1()->total = $calculatedPoints['total'];
+    if ($composition != null) {
+      $gamesPlayed = $this->getDoctrine()->getRepository(Game::class)->findBy(['isFinished' => true,]);
 
-    // Team 2
-    $calculatedPoints = $this->calculatePoints($composition->getTeam2(), $gamesPlayed, 7);
-    $composition->getTeam2()->mj = $calculatedPoints['mj'];
-    $composition->getTeam2()->g = $calculatedPoints['g'];
-    $composition->getTeam2()->n = $calculatedPoints['n'];
-    $composition->getTeam2()->p = $calculatedPoints['p'];
-    $composition->getTeam2()->total = $calculatedPoints['total'];
+      // Team 1
+      $calculatedPoints = $this->calculatePoints($composition->getTeam1(), $gamesPlayed, 8);
+      $composition->getTeam1()->mj = $calculatedPoints['mj'];
+      $composition->getTeam1()->g = $calculatedPoints['g'];
+      $composition->getTeam1()->n = $calculatedPoints['n'];
+      $composition->getTeam1()->p = $calculatedPoints['p'];
+      $composition->getTeam1()->total = $calculatedPoints['total'];
 
-    // Team 3
-    $calculatedPoints = $this->calculatePoints($composition->getTeam3(), $gamesPlayed, 6);
-    $composition->getTeam3()->mj = $calculatedPoints['mj'];
-    $composition->getTeam3()->g = $calculatedPoints['g'];
-    $composition->getTeam3()->n = $calculatedPoints['n'];
-    $composition->getTeam3()->p = $calculatedPoints['p'];
-    $composition->getTeam3()->total = $calculatedPoints['total'];
+      // Team 2
+      $calculatedPoints = $this->calculatePoints($composition->getTeam2(), $gamesPlayed, 7);
+      $composition->getTeam2()->mj = $calculatedPoints['mj'];
+      $composition->getTeam2()->g = $calculatedPoints['g'];
+      $composition->getTeam2()->n = $calculatedPoints['n'];
+      $composition->getTeam2()->p = $calculatedPoints['p'];
+      $composition->getTeam2()->total = $calculatedPoints['total'];
 
-    // Team 4
-    $calculatedPoints = $this->calculatePoints($composition->getTeam4(), $gamesPlayed, 5);
-    $composition->getTeam4()->mj = $calculatedPoints['mj'];
-    $composition->getTeam4()->g = $calculatedPoints['g'];
-    $composition->getTeam4()->n = $calculatedPoints['n'];
-    $composition->getTeam4()->p = $calculatedPoints['p'];
-    $composition->getTeam4()->total = $calculatedPoints['total'];
+      // Team 3
+      $calculatedPoints = $this->calculatePoints($composition->getTeam3(), $gamesPlayed, 6);
+      $composition->getTeam3()->mj = $calculatedPoints['mj'];
+      $composition->getTeam3()->g = $calculatedPoints['g'];
+      $composition->getTeam3()->n = $calculatedPoints['n'];
+      $composition->getTeam3()->p = $calculatedPoints['p'];
+      $composition->getTeam3()->total = $calculatedPoints['total'];
 
-    // Team 5
-    $calculatedPoints = $this->calculatePoints($composition->getTeam5(), $gamesPlayed,4);
-    $composition->getTeam5()->mj = $calculatedPoints['mj'];
-    $composition->getTeam5()->g = $calculatedPoints['g'];
-    $composition->getTeam5()->n = $calculatedPoints['n'];
-    $composition->getTeam5()->p = $calculatedPoints['p'];
-    $composition->getTeam5()->total = $calculatedPoints['total'];
+      // Team 4
+      $calculatedPoints = $this->calculatePoints($composition->getTeam4(), $gamesPlayed, 5);
+      $composition->getTeam4()->mj = $calculatedPoints['mj'];
+      $composition->getTeam4()->g = $calculatedPoints['g'];
+      $composition->getTeam4()->n = $calculatedPoints['n'];
+      $composition->getTeam4()->p = $calculatedPoints['p'];
+      $composition->getTeam4()->total = $calculatedPoints['total'];
 
-    // Team 6
-    $calculatedPoints = $this->calculatePoints($composition->getTeam6(), $gamesPlayed,3);
-    $composition->getTeam6()->mj = $calculatedPoints['mj'];
-    $composition->getTeam6()->g = $calculatedPoints['g'];
-    $composition->getTeam6()->n = $calculatedPoints['n'];
-    $composition->getTeam6()->p = $calculatedPoints['p'];
-    $composition->getTeam6()->total = $calculatedPoints['total'];
+      // Team 5
+      $calculatedPoints = $this->calculatePoints($composition->getTeam5(), $gamesPlayed,4);
+      $composition->getTeam5()->mj = $calculatedPoints['mj'];
+      $composition->getTeam5()->g = $calculatedPoints['g'];
+      $composition->getTeam5()->n = $calculatedPoints['n'];
+      $composition->getTeam5()->p = $calculatedPoints['p'];
+      $composition->getTeam5()->total = $calculatedPoints['total'];
 
-    // Team 7
-    $calculatedPoints = $this->calculatePoints($composition->getTeam7(), $gamesPlayed,2);
-    $composition->getTeam7()->mj = $calculatedPoints['mj'];
-    $composition->getTeam7()->g = $calculatedPoints['g'];
-    $composition->getTeam7()->n = $calculatedPoints['n'];
-    $composition->getTeam7()->p = $calculatedPoints['p'];
-    $composition->getTeam7()->total = $calculatedPoints['total'];
+      // Team 6
+      $calculatedPoints = $this->calculatePoints($composition->getTeam6(), $gamesPlayed,3);
+      $composition->getTeam6()->mj = $calculatedPoints['mj'];
+      $composition->getTeam6()->g = $calculatedPoints['g'];
+      $composition->getTeam6()->n = $calculatedPoints['n'];
+      $composition->getTeam6()->p = $calculatedPoints['p'];
+      $composition->getTeam6()->total = $calculatedPoints['total'];
 
-    // Team 8
-    $calculatedPoints = $this->calculatePoints($composition->getTeam6(), $gamesPlayed,1);
-    $composition->getTeam8()->mj = $calculatedPoints['mj'];
-    $composition->getTeam8()->g = $calculatedPoints['g'];
-    $composition->getTeam8()->n = $calculatedPoints['n'];
-    $composition->getTeam8()->p = $calculatedPoints['p'];
-    $composition->getTeam8()->total = $calculatedPoints['total'];
+      // Team 7
+      $calculatedPoints = $this->calculatePoints($composition->getTeam7(), $gamesPlayed,2);
+      $composition->getTeam7()->mj = $calculatedPoints['mj'];
+      $composition->getTeam7()->g = $calculatedPoints['g'];
+      $composition->getTeam7()->n = $calculatedPoints['n'];
+      $composition->getTeam7()->p = $calculatedPoints['p'];
+      $composition->getTeam7()->total = $calculatedPoints['total'];
 
-//    dd($composition);
+      // Team 8
+      $calculatedPoints = $this->calculatePoints($composition->getTeam6(), $gamesPlayed,1);
+      $composition->getTeam8()->mj = $calculatedPoints['mj'];
+      $composition->getTeam8()->g = $calculatedPoints['g'];
+      $composition->getTeam8()->n = $calculatedPoints['n'];
+      $composition->getTeam8()->p = $calculatedPoints['p'];
+      $composition->getTeam8()->total = $calculatedPoints['total'];
+    }
 
     return $this->render('user/users/show.html.twig', [
         'user' => $user
