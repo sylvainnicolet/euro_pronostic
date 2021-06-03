@@ -15,3 +15,10 @@
 {{ form_rest(form) }}
 <button class="w-full py-2 px-4 rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none">{{ button|default('Enregistrer') }}</button>
 {{ form_end(form) }}
+
+{% if error_message is defined %}
+  <p class="text-red-600 mt-3">
+    {{ error_message }}
+  </p>
+{% endif %}
+

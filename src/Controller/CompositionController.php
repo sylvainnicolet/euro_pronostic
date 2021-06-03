@@ -55,13 +55,20 @@ class CompositionController extends AbstractController
       // Set user
       $composition->setPlayer($user);
 
+      // Validation
+      if ($this->isTeamDuplicated($composition)) {
+        return $this->render('/user/composition/create.html.twig', [
+            'form' => $form->createView(),
+            'error_message' => 'Tu ne peux pas choisir plusieurs fois la même équipe !'
+        ]);
+      }
+
       $this->em->persist($composition);
       $this->em->flush();
       return $this->redirectToRoute('user.index');
     }
 
     return $this->render('/user/composition/create.html.twig', [
-//        'composition' => $composition,
         'form' => $form->createView()
     ]);
   }
@@ -79,6 +86,14 @@ class CompositionController extends AbstractController
     $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {
 
+      // Validation
+      if ($this->isTeamDuplicated($composition)) {
+        return $this->render('/user/composition/edit.html.twig', [
+            'form' => $form->createView(),
+            'error_message' => 'Tu ne peux pas choisir plusieurs fois la même équipe !'
+        ]);
+      }
+
       $this->em->flush();
       return $this->redirectToRoute('user.index');
     }
@@ -86,5 +101,20 @@ class CompositionController extends AbstractController
     return $this->render('/user/composition/edit.html.twig', [
         'form' => $form->createView()
     ]);
+  }
+
+  private function isTeamDuplicated($composition) {
+    $teams = [
+        $composition->getTeam1()->getName(),
+        $composition->getTeam2()->getName(),
+        $composition->getTeam3()->getName(),
+        $composition->getTeam4()->getName(),
+        $composition->getTeam5()->getName(),
+        $composition->getTeam6()->getName(),
+        $composition->getTeam7()->getName(),
+        $composition->getTeam8()->getName(),
+    ];
+
+    return count($teams) !== count(array_unique($teams));
   }
 }
