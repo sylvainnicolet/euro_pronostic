@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210602160539 extends AbstractMigration
+final class Version20210603191821 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -22,6 +22,7 @@ final class Version20210602160539 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SEQUENCE composition_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE game_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE SEQUENCE league_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE team_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE "user_id_seq" INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE TABLE composition (id INT NOT NULL, player_id INT NOT NULL, team_1_id INT NOT NULL, team_2_id INT NOT NULL, team_3_id INT NOT NULL, team_4_id INT NOT NULL, team_5_id INT NOT NULL, team_6_id INT NOT NULL, team_7_id INT NOT NULL, team_8_id INT NOT NULL, PRIMARY KEY(id))');
@@ -37,9 +38,11 @@ final class Version20210602160539 extends AbstractMigration
         $this->addSql('CREATE TABLE game (id INT NOT NULL, team_1_id INT DEFAULT NULL, team_2_id INT DEFAULT NULL, score_1 INT DEFAULT NULL, score_2 INT DEFAULT NULL, is_group_game BOOLEAN NOT NULL, is_finished BOOLEAN NOT NULL, date DATE NOT NULL, time TIME(0) WITHOUT TIME ZONE NOT NULL, phase VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_232B318C2132A881 ON game (team_1_id)');
         $this->addSql('CREATE INDEX IDX_232B318C3387076F ON game (team_2_id)');
+        $this->addSql('CREATE TABLE league (id INT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE team (id INT NOT NULL, name VARCHAR(255) NOT NULL, groupe INT NOT NULL, flag VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE TABLE "user" (id INT NOT NULL, username VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE "user" (id INT NOT NULL, league_id INT DEFAULT NULL, username VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D649F85E0677 ON "user" (username)');
+        $this->addSql('CREATE INDEX IDX_8D93D64958AFC4DE ON "user" (league_id)');
         $this->addSql('ALTER TABLE composition ADD CONSTRAINT FK_C7F434799E6F5DF FOREIGN KEY (player_id) REFERENCES "user" (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE composition ADD CONSTRAINT FK_C7F43472132A881 FOREIGN KEY (team_1_id) REFERENCES team (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE composition ADD CONSTRAINT FK_C7F43473387076F FOREIGN KEY (team_2_id) REFERENCES team (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
@@ -51,12 +54,14 @@ final class Version20210602160539 extends AbstractMigration
         $this->addSql('ALTER TABLE composition ADD CONSTRAINT FK_C7F43475C3AE70B FOREIGN KEY (team_8_id) REFERENCES team (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE game ADD CONSTRAINT FK_232B318C2132A881 FOREIGN KEY (team_1_id) REFERENCES team (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE game ADD CONSTRAINT FK_232B318C3387076F FOREIGN KEY (team_2_id) REFERENCES team (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE "user" ADD CONSTRAINT FK_8D93D64958AFC4DE FOREIGN KEY (league_id) REFERENCES league (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SCHEMA public');
+        $this->addSql('ALTER TABLE "user" DROP CONSTRAINT FK_8D93D64958AFC4DE');
         $this->addSql('ALTER TABLE composition DROP CONSTRAINT FK_C7F43472132A881');
         $this->addSql('ALTER TABLE composition DROP CONSTRAINT FK_C7F43473387076F');
         $this->addSql('ALTER TABLE composition DROP CONSTRAINT FK_C7F43478B3B600A');
@@ -70,10 +75,12 @@ final class Version20210602160539 extends AbstractMigration
         $this->addSql('ALTER TABLE composition DROP CONSTRAINT FK_C7F434799E6F5DF');
         $this->addSql('DROP SEQUENCE composition_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE game_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE league_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE team_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE "user_id_seq" CASCADE');
         $this->addSql('DROP TABLE composition');
         $this->addSql('DROP TABLE game');
+        $this->addSql('DROP TABLE league');
         $this->addSql('DROP TABLE team');
         $this->addSql('DROP TABLE "user"');
     }
