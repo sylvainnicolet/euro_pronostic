@@ -26,6 +26,25 @@ class RankingController extends AbstractController
     }
 
     return $this->render('user/ranking/index.html.twig', [
+        'title' => 'Classement général',
+        'users' => $users
+    ]);
+  }
+
+  /**
+   * @Route("/user/ranking-league", name="user.ranking-league")
+   * @return Response
+   */
+  public function indexLeague(): Response
+  {
+    $user = $this->getUser();
+
+    $users = $this->getDoctrine()->getRepository(User::class)->findBy([
+        'league' => $user->getLeague()
+    ]);
+
+    return $this->render('user/ranking/index.html.twig', [
+        'title' => 'Classement de ma ligue',
         'users' => $users
     ]);
   }

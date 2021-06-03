@@ -1,22 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Classement{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
   <section id="user-groupes" class="flex flex-col items-center">
     <a href="{{ path('user.index') }}" class="text-lg self-end"><i class="fas fa-home"></i></a>
 
-    <h1 class="text-center text-2xl font-extrabold uppercase my-10">Classement</h1>
+    <h1 class="text-center text-2xl font-extrabold uppercase my-10">{{ title }}</h1>
 
     <p class="mb-6">
       Une fois que la compétition a débuté vous pouvez cliquer sur un joueur pour voir sa composition.
     </p>
 
 
-    <table class="table-fixed w-full" >
+    <table class="table-fixed w-full text-sm">
       <thead>
       <tr class="border-b-2">
-        <th class="text-left w-1/2">Joueur</th>
+        <th class="text-left">Joueur</th>
+        <th class="text-left">Ligue</th>
         <th class="text-right">Pts</th>
       </tr>
       </thead>
@@ -26,6 +27,9 @@
         <tr>
           <td class="flex items-center">
             <a href="#">{{ user.username }}</a>
+          </td>
+          <td>
+            {{ user.league.name }}
           </td>
           <td class="text-right">
             0
