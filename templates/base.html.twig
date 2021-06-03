@@ -13,10 +13,6 @@
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
-
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
     </head>
     <body>
         <div class="min-h-screen p-10 bg-gray-100">
@@ -24,5 +20,9 @@
                 {% block body %}{% endblock %}
             </div>
         </div>
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
     </body>
 </html>

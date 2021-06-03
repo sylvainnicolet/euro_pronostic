@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Composition;
 use App\Entity\Team;
+use App\Repository\TeamRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,6 +18,8 @@ class CompositionType extends AbstractType
         $builder
             ->add('team_' . $i, EntityType::class, [
                 'class' => Team::class,
+                'query_builder'=>function(TeamRepository $teams){
+                  return $teams ->createQueryBuilder('t')->orderBy('t.name','ASC');},
                 'choice_label' => 'name',
                 'choice_value' => 'id',
                 'label' => 'Equipe ' . $i
