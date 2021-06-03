@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ligues{% endblock %}
+
+{% block body %}
+  <section id="admin-leagues" class="flex flex-col items-center">
+    <a href="{{ path('admin.index') }}" class="text-lg self-end"><i class="fas fa-home"></i></a>
+
+    <h1 class="text-center text-2xl font-extrabold uppercase my-10">Ligues</h1>
+
+    <div class="w-full space-y-6 text-lg">
+      <div class="w-full text-center py-3 rounded-md text-white bg-indigo-600 hover:bg-indigo-700"><a href="{{ path('admin.leagues.create') }}">Créer une ligue</a></div>
+      <table class="table-auto w-full space-y-6 text-sm" >
+        <thead>
+        <tr class="border-b-2">
+          <th class="text-left uppercase">Ligue</th>
+          <th class="text-right"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for league in leagues %}
+          <tr>
+            <td class="py-3">
+              <a href="{{ path('admin.leagues.edit', {id: league.id}) }}" class="hover:underline">{{ league.name }}</a>
+            </td>
+            <td class="text-right">
+              <form method="POST" action="{{ path('admin.leagues.delete', {id: league.id}) }}"
+                    onsubmit="return confirm('Êtes-vous vraiment sûr de supprimer cette ligue ?')">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ league.id) }}">
+                <button class="text-center p-2 rounded-md text-white bg-red-600 hover:bg-red-700">Supprimer</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+{% endblock %}

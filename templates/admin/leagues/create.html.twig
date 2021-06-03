@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une ligue{% endblock %}
+
+{% block body %}
+  <section id="admin-league-created" class="flex flex-col items-center">
+    <a href="{{ path('admin.index') }}" class="text-lg self-end"><i class="fas fa-home"></i></a>
+
+    <h1 class="text-center text-2xl font-extrabold uppercase my-10">Créer une ligue</h1>
+
+    {{ include('/admin/leagues/_form.html.twig', {button: 'Créer'}) }}
+  </section>
+
+{% endblock %}

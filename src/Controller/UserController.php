@@ -40,17 +40,9 @@ class UserController extends AbstractController
    * @Route("/admin/users", name="admin.users")
    * @return Response
    */
-  public function showUsers(): Response
+  public function show(): Response
   {
-    $allUsers = $this->getDoctrine()->getRepository(User::class)->findAll();
-    $users = [];
-
-    // Get only users with role_user
-    foreach ($allUsers as $user) {
-      if (in_array("ROLE_USER", $user->getRoles())) {
-        array_push($users, $user);
-      }
-    }
+    $users = $this->getDoctrine()->getRepository(User::class)->findAll();
 
     return $this->render('admin/users/index.html.twig', [
         'users' => $users

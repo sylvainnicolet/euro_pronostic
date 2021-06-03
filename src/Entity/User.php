@@ -41,6 +41,11 @@ class User implements UserInterface
    */
   private $composition;
 
+  /**
+   * @ORM\ManyToOne(targetEntity=League::class, inversedBy="player")
+   */
+  private $league;
+
   public function getId(): ?int
   {
     return $this->id;
@@ -125,6 +130,18 @@ class User implements UserInterface
       }
 
       $this->composition = $composition;
+
+      return $this;
+  }
+
+  public function getLeague(): ?League
+  {
+      return $this->league;
+  }
+
+  public function setLeague(?League $league): self
+  {
+      $this->league = $league;
 
       return $this;
   }
