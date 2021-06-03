@@ -8,18 +8,21 @@
 
     <h1 class="text-center text-2xl font-extrabold uppercase my-10">{{ user.username }}</h1>
 
-    <table class="table-fixed w-full text-sm">
-      <thead>
-      <tr class="border-b-2">
-        <th class="text-left w-1/2">Pays</th>
-        <th class="text-center font-medium">MJ</th>
-        <th class="text-center font-medium">G</th>
-        <th class="text-center font-medium">N</th>
-        <th class="text-center font-medium">P</th>
-        <th class="text-right">Total</th>
-      </tr>
-      </thead>
-      <tbody>
+    {% if user.composition is null %}
+      <p>Aucune composition n'a été faite</p>
+    {% else %}
+      <table class="table-fixed w-full text-sm">
+        <thead>
+        <tr class="border-b-2">
+          <th class="text-left w-1/2">Pays</th>
+          <th class="text-center font-medium">MJ</th>
+          <th class="text-center font-medium">G</th>
+          <th class="text-center font-medium">N</th>
+          <th class="text-center font-medium">P</th>
+          <th class="text-right">Total</th>
+        </tr>
+        </thead>
+        <tbody>
 
         <tr>
           <td class="items-center py-2">
@@ -189,8 +192,10 @@
           </td>
         </tr>
 
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    {% endif %}
+
 
   </section>
 {% endblock %}
