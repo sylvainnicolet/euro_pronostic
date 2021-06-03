@@ -31,7 +31,11 @@
             {{ user.league.name }}
           </td>
           <td class="text-right">
-            0
+            {% if user.composition is not null %}
+              {{ user.composition.total }}
+            {% else %}
+              0
+            {% endif %}
           </td>
         </tr>
       {% endfor %}
