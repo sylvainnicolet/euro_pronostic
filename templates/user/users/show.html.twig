@@ -1,0 +1,196 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block body %}
+  <section id="user-groupes" class="flex flex-col items-center">
+    <a href="{{ path('user.index') }}" class="text-lg self-end"><i class="fas fa-home"></i></a>
+
+    <h1 class="text-center text-2xl font-extrabold uppercase my-10">{{ user.username }}</h1>
+
+    <table class="table-fixed w-full text-sm">
+      <thead>
+      <tr class="border-b-2">
+        <th class="text-left w-1/2">Pays</th>
+        <th class="text-center font-medium">MJ</th>
+        <th class="text-center font-medium">G</th>
+        <th class="text-center font-medium">N</th>
+        <th class="text-center font-medium">P</th>
+        <th class="text-right">Total</th>
+      </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td class="items-center py-2">
+            1. {{ user.composition.team1.flag }} {{ user.composition.team1.name }}
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-right">
+            -
+          </td>
+        </tr>
+
+        <tr>
+          <td class="items-center py-2">
+            2. {{ user.composition.team2.flag }} {{ user.composition.team2.name }}
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-right">
+            -
+          </td>
+        </tr>
+
+        <tr>
+          <td class="items-center py-2">
+            3. {{ user.composition.team3.flag }} {{ user.composition.team3.name }}
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-right">
+            -
+          </td>
+        </tr>
+
+        <tr>
+          <td class="items-center py-2">
+            4. {{ user.composition.team4.flag }} {{ user.composition.team4.name }}
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-right">
+            -
+          </td>
+        </tr>
+
+        <tr>
+          <td class="items-center py-2">
+            5. {{ user.composition.team5.flag }} {{ user.composition.team5.name }}
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-right">
+            -
+          </td>
+        </tr>
+
+        <tr>
+          <td class="items-center py-2">
+            6. {{ user.composition.team6.flag }} {{ user.composition.team6.name }}
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-right">
+            -
+          </td>
+        </tr>
+
+        <tr>
+          <td class="items-center py-2">
+            7. {{ user.composition.team7.flag }} {{ user.composition.team7.name }}
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-right">
+            -
+          </td>
+        </tr>
+
+        <tr>
+          <td class="items-center py-2">
+            8. {{ user.composition.team8.flag }} {{ user.composition.team8.name }}
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-center">
+            -
+          </td>
+          <td class="text-right">
+            -
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </section>
+{% endblock %}

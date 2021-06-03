@@ -12,7 +12,6 @@
       Une fois que la compétition a débuté vous pouvez cliquer sur un joueur pour voir sa composition.
     </p>
 
-
     <table class="table-fixed w-full text-sm">
       <thead>
       <tr class="border-b-2">
@@ -25,8 +24,8 @@
 
       {% for user in users %}
         <tr>
-          <td class="flex items-center">
-            <a href="#">{{ user.username }}</a>
+          <td class="py-2">
+            <a href="{{ path('user.show', {id: user.id, slug: user.slug}) }}">{{ user.username }}</a>
           </td>
           <td>
             {{ user.league.name }}
@@ -39,7 +38,6 @@
 
       </tbody>
     </table>
-
 
   </section>
 {% endblock %}

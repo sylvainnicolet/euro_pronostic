@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -144,5 +145,9 @@ class User implements UserInterface
       $this->league = $league;
 
       return $this;
+  }
+
+  public function getSlug() : string {
+    return (new Slugify())->slugify($this->username);
   }
 }

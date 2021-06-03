@@ -27,7 +27,7 @@
 
         {% for team in groupe|sort((a, b) => b.total <=> a.total) %}
           <tr>
-            <td class="py-2 flex items-center">
+            <td class="py-2">
               󠁧󠁢{{ team.flag }}󠁿 {{ team.name }}
             </td>
             <td class="text-center">

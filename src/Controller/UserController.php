@@ -40,12 +40,34 @@ class UserController extends AbstractController
    * @Route("/admin/users", name="admin.users")
    * @return Response
    */
-  public function show(): Response
+  public function index(): Response
   {
     $users = $this->getDoctrine()->getRepository(User::class)->findAll();
 
     return $this->render('admin/users/index.html.twig', [
         'users' => $users
+    ]);
+  }
+
+  /**
+   * @Route("/user/{slug}-{id}", name="user.show", requirements={"slug": "[a-z0-9\-]*"})
+   * @param User $user
+   * @param string $slug
+   * @return Response
+   */
+  public function show(User $user, string $slug): Response
+  {
+    if ($user->getSlug() !== $slug) {
+      return $this->redirectToRoute('user.show', [
+          'id' => $user->getId(),
+          'slug' => $user->getSlug()
+      ], 301);
+    }
+
+//    dd($user);
+
+    return $this->render('user/users/show.html.twig', [
+        'user' => $user
     ]);
   }
 
