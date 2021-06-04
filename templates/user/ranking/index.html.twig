@@ -23,20 +23,16 @@
       </thead>
       <tbody>
 
-      {% for user in users %}
+      {% for user in data.users|sort((a, b) => b.total <=> a.total) %}
         <tr>
           <td class="py-2">
-            <a href="{{ path('user.show', {id: user.id, slug: user.slug}) }}" class="{% if user.composition is null %}text-red-600{% endif %}">{{ user.username }}</a>
+            <a href="{{ path('user.show', {id: user.id, slug: user.slug}) }}" class="{% if not user.hasComposition %}text-red-600{% endif %}">{{ user.username }}</a>
           </td>
           <td>
-            {{ user.league.name }}
+            {{ user.league }}
           </td>
           <td class="text-right">
-            {% if user.composition is not null %}
-              {{ user.composition.total }}
-            {% else %}
-              0
-            {% endif %}
+            {{ user.total }}
           </td>
         </tr>
       {% endfor %}
