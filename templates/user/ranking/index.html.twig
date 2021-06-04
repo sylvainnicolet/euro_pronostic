@@ -8,9 +8,10 @@
 
     <h1 class="text-center text-2xl font-extrabold uppercase my-10">{{ title }}</h1>
 
-    <p class="mb-6">
-      Vous pouvez cliquer sur un joueur pour voir sa composition.
-    </p>
+    <ul class="mb-6 space-y-1">
+      <li>Vous pouvez cliquer sur un joueur pour voir sa composition.</li>
+      <li>Les joueurs en rouge n'ont pas validé leur composition.</li>
+    </ul>
 
     <table class="table-fixed w-full text-sm">
       <thead>
@@ -25,7 +26,7 @@
       {% for user in users %}
         <tr>
           <td class="py-2">
-            <a href="{{ path('user.show', {id: user.id, slug: user.slug}) }}">{{ user.username }}</a>
+            <a href="{{ path('user.show', {id: user.id, slug: user.slug}) }}" class="{% if user.composition is null %}text-red-600{% endif %}">{{ user.username }}</a>
           </td>
           <td>
             {{ user.league.name }}
