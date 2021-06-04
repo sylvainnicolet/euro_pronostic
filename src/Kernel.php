@@ -26,6 +26,7 @@ class Kernel extends BaseKernel
 
     protected function configureRoutes(RoutingConfigurator $routes): void
     {
+        date_default_timezone_set("Europe/Madrid");
         $routes->import('../config/{routes}/'.$this->environment.'/*.yaml');
         $routes->import('../config/{routes}/*.yaml');
 

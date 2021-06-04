@@ -8,7 +8,9 @@
 
     <h1 class="text-center text-2xl font-extrabold uppercase my-10">{{ user.username }}</h1>
 
-    {% if user.composition is null %}
+    {% if not hasStarted %}
+      <p>Tu ne peux pas voir la composition avant le début de la compétition</p>
+    {% elseif user.composition is null %}
       <p>Aucune composition n'a été faite</p>
     {% else %}
       <table class="table-fixed w-full text-sm">

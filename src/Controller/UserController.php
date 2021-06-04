@@ -66,6 +66,16 @@ class UserController extends AbstractController
       ], 301);
     }
 
+    $endDate = new \DateTime();
+    $endDate->setDate(2021,6,11)->setTime(18,00);
+    $currentDate = new \DateTime();
+
+    $hasStarted = false;
+
+    if ($currentDate >= $endDate) {
+      $hasStarted = true;
+    }
+
     $composition = $this->getDoctrine()->getRepository(Composition::class)->findOneBy([
         'player' => $user->getId()
     ]);
@@ -139,7 +149,8 @@ class UserController extends AbstractController
     }
 
     return $this->render('user/users/show.html.twig', [
-        'user' => $user
+        'user' => $user,
+        'hasStarted' => $hasStarted
     ]);
   }
 
