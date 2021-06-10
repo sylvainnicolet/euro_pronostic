@@ -49,6 +49,23 @@ class CompositionController extends AbstractController
     $composition = new Composition();
     $form = $this->createForm(CompositionType::class, $composition);
 
+    $endDate = new \DateTime();
+    $endDate->setDate(2021,6,11)->setTime(18,00);
+    $currentDate = new \DateTime();
+
+    $hasStarted = false;
+
+    if ($currentDate >= $endDate) {
+      $hasStarted = true;
+    }
+
+    if ($hasStarted) {
+      return $this->redirectToRoute('user.show', [
+          'id' => $user->getId(),
+          'slug' => $user->getSlug()
+      ]);
+    }
+
     $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {
 
@@ -82,6 +99,24 @@ class CompositionController extends AbstractController
   public function edit(Composition $composition, Request $request) {
 
     $form = $this->createForm(CompositionType::class, $composition);
+    $user = $this->getUser();
+
+    $endDate = new \DateTime();
+    $endDate->setDate(2021,6,11)->setTime(18,00);
+    $currentDate = new \DateTime();
+
+    $hasStarted = false;
+
+    if ($currentDate >= $endDate) {
+      $hasStarted = true;
+    }
+
+    if ($hasStarted) {
+      return $this->redirectToRoute('user.show', [
+          'id' => $user->getId(),
+          'slug' => $user->getSlug()
+      ]);
+    }
 
     $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {
