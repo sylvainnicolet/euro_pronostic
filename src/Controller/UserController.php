@@ -67,7 +67,7 @@ class UserController extends AbstractController
     }
 
     $endDate = new \DateTime();
-    $endDate->setDate(2021,6,11)->setTime(18,00);
+    $endDate->setDate(2020,6,11)->setTime(18,00);
     $currentDate = new \DateTime();
 
     $hasStarted = false;
