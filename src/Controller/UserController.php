@@ -140,7 +140,7 @@ class UserController extends AbstractController
       $composition->getTeam7()->total = $calculatedPoints['total'];
 
       // Team 8
-      $calculatedPoints = $this->calculatePoints($composition->getTeam6(), $gamesPlayed,1);
+      $calculatedPoints = $this->calculatePoints($composition->getTeam8(), $gamesPlayed,1);
       $composition->getTeam8()->mj = $calculatedPoints['mj'];
       $composition->getTeam8()->g = $calculatedPoints['g'];
       $composition->getTeam8()->n = $calculatedPoints['n'];
